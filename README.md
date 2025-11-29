@@ -43,7 +43,7 @@ https://www.cnbc.com/2020/11/18/coronavirus-pfizer-vaccine-is-95percent-effectiv
 
 ## Live Demo
 **https://ciquiz.systemii.co/**  
-Deployed on Railway using Gunicorn + Flask.
+Deployed via **Railway** with automatic GitHub deployments.
 
 
 ---
@@ -55,6 +55,7 @@ Deployed on Railway using Gunicorn + Flask.
 - **HTML / CSS / Bootstrap**
 - **JSON** (lightweight global stats persistence)
 - **Gunicorn** (production server)
+- **Railway** (deployment platform with custom domain)
 
 ---
 
