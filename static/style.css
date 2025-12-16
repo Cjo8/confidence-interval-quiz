@@ -242,7 +242,7 @@ small {
 }
 
 /* Improve readability inside the Real-world examples modal */
-#exampleModal .modal-body{
+#modal.fade .modal-body{
   font-size: 1.02rem;       /* or 1rem if you want slightly smaller */
   line-height: 1.6;
   letter-spacing: 0.1px;
@@ -253,17 +253,17 @@ small {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-#exampleModal .modal-body p{
+#modal.fade .modal-body p{
   margin-bottom: 1rem;
 }
 
 /* References: smaller + de-emphasized (grey) */
-#exampleModal .ci-references{
+#modal.fade .ci-references{
   font-size: 0.92rem;
   color: #6c757d;           /* Bootstrap "text-muted" tone */
 }
 
-#exampleModal .ci-references a{
+#modal.fade .ci-references a{
   color: inherit;           /* keeps links subdued */
   text-decoration: underline;
 }
