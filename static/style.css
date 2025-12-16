@@ -241,32 +241,30 @@ small {
   display: none !important;
 }
 
-/* Improve readability inside the Real-world examples modal */
-.modal.fade .modal-body{
-  font-size: 1.02rem;       /* or 1rem if you want slightly smaller */
-  line-height: 1.6;
-  letter-spacing: 0.1px;
-  text-wrap: pretty;        /* modern browsers: nicer line breaks */
-  overflow-wrap: anywhere;  /* prevents ugly overflow on long tokens */
-  word-break: normal;
-  hyphens: auto;            /* allows hyphenation where supported */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+/* CI modals: readable system font + clean spacing */
+.ci-modal .modal-body{
+  font: 1.02rem/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
-.modal.fade .modal-body p{
-  margin-bottom: 1rem;
+.ci-modal .modal-body p{
+  margin: 0 0 1rem;
 }
 
-/* References: smaller + de-emphasized (grey) */
-.modal.fade .ci-references{
+/* References: smaller + muted */
+.ci-modal .ci-references{
   font-size: 0.92rem;
-  color: #6c757d;           /* Bootstrap "text-muted" tone */
+  color: #6c757d;
 }
 
-.modal.fade .ci-references a{
-  color: inherit;           /* keeps links subdued */
+.ci-modal .ci-references a{
+  color: inherit;
   text-decoration: underline;
 }
+
+
 
 
 /* Reduce extra bottom space after results table */
