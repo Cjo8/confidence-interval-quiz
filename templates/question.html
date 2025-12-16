@@ -160,19 +160,21 @@
           unitHidden.value = unitSelect.value;
 
           // 2) Map unit kinds to readable labels per system
-          //    IMPORTANT: these keys must match question.unit_kind values in your question bank.
+          //    IMPORTANT: keys must match question.unit_kind values in your question bank.
           const UNIT_SUFFIX = {
-            // heights/lengths
+            // Human height: inches / centimeters
             height:   { metric: "in centimeters", imperial: "in inches" },
-            length:   { metric: "in centimeters", imperial: "in inches" },
 
-            // distances
+            // General length/depth: feet / meters  ✅ (fixes Pacific depth)
+            length:   { metric: "in meters",      imperial: "in feet"   },
+
+            // Distance: miles / kilometers
             distance: { metric: "in kilometers",  imperial: "in miles"  },
 
-            // weights
+            // Weight: pounds / kilograms
             weight:   { metric: "in kilograms",   imperial: "in pounds" },
 
-            // temps
+            // Temperature: °F / °C
             temp:     { metric: "in °C",          imperial: "in °F"     }
           };
 
@@ -208,7 +210,6 @@
 
             const kind = kindEl.value;
 
-            // Guard if conversion helpers aren't present
             if (typeof parseShorthandNumber !== "function" ||
                 typeof convertValue !== "function" ||
                 typeof formatWithSeparators !== "function") {
