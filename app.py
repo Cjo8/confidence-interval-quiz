@@ -140,21 +140,21 @@ QUESTIONS = [
     },
     {
         "id": "q3",
-        "text": "Height of tallest man in recorded history",
+        "text": "Height of tallest man in recorded history, inches / cm",
         "true_value": 107,  # inches
         "unit": "inches",
         "unit_kind": "height",
     },
     {
         "id": "q4",
-        "text": "Depth of deepest part of Pacific Ocean",
+        "text": "Depth of deepest part of Pacific Ocean, feet / meters",
         "true_value": 10_984,  # meters
         "unit": "meters",
         "unit_kind": "length",
     },
     {
         "id": "q5",
-        "text": "Average distance from Earth to the Moon",
+        "text": "Average distance from Earth to the Moon, miles / km",
         "true_value": 237_674.5,  # miles
         "unit": "miles",
         "unit_kind": "distance",
@@ -222,7 +222,7 @@ QUESTIONS = [
     },
     {
         "id": "q16",
-        "text": "Amount of coal produced by U.S. mines in 2019",
+        "text": "Amount of coal produced by U.S. mines in 2019, pounds / kg",
         "true_value": 1_410_518_000_000,  # pounds
         "unit": "pounds",
         "unit_kind": "weight",
