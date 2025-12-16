@@ -9,27 +9,88 @@
     <h4 class="card-title mb-3">What is this?</h4>
 
     <p class="lead">
-      This short quiz tests how well you understand a <strong>95% confidence interval</strong>.
-      For each question, you'll enter a <em>lower</em> and <em>upper</em> bound that you believe
-      has a 95% chance of containing the true (actual) answer.
+      A short quiz designed to calibrate intuition about <strong>uncertainty</strong>.
+      For each question, you’ll enter a <em>lower</em> and <em>upper</em> bound that you believe
+      would capture the true value in about 95 out of 100 repetitions of the same exercise.
     </p>
 
-    <h4 class="card-title mb-3">What's the context?</h4>
     <p>
-        The 95% confidence interval (CI) is the standard statistical tool for expressing uncertainty in scientific research. The 95% CI reflects the range within which the true value would fall in about 95 out of 100 repeated samples.</br></br>
-
-        Because humans are consistently overconfident, people tend to choose intervals that are far too narrow—a finding replicated across many areas of research.</br></br>
-
-        This quiz helps us calibrate just how wide a truly 95% interval must be and gives us a clearer sense of what genuine statistical confidence looks like in practice.</br></br>
-
-        In short, when a study reports a 95% CI, it means we can be <strong><em>pretty darn confident</em></strong> that the true value lies within that interval...
+      This is not a statistics test. It’s a practical exercise in how wide a range must be
+      to honestly reflect uncertainty when you don’t know the answer.
     </p>
 
-    <h4 class="card-title mb-3">Can you give a quick and familiar example?</h4>
+    <h4 class="card-title mb-3">What is a confidence interval?</h4>
     <p>
-        When Pfizer released the first large randomized trial results for the COVID-19 vaccine, they reported that the vaccine was 95% effective, a number based directly on a 95% confidence interval calculated from 170 confirmed cases in a 43,000-person trial.</br></br>
+      Randomized controlled trials (RCTs) allow scientists to make strong causal claims—event A
+      caused outcome B—because randomization balances confounders (external factors that influence
+      both the exposure and the outcome) by design. But RCTs are often impossible, unethical, or
+      impractical. We can’t randomly assign people to smoke for decades, expose pregnant individuals
+      to potential risks, or test many real-world behaviors at scale.
+      <br><br>
+      In these cases, scientists rely on observational data, where uncertainty, bias, and noise
+      are unavoidable.
+      <br><br>
+      That’s where <strong>confidence intervals (CIs)</strong> come in. Rather than reporting a
+      single number, researchers report a range of values consistent with the observed data,
+      given sampling variability. Confidence intervals communicate the precision of an estimate
+      and help distinguish robust effects from fragile ones.
+      <br><br>
+      A useful way to think about confidence intervals is to stop asking, “What’s the number?”
+      and instead ask:
+      <br>
+      <em>“What range of values is consistent with the data, given noise and limited samples?”</em>
+      <br><br>
+      For example, if you ask someone the average height of adult men in the U.S., most people will
+      give a single number—or a very tight range—while still claiming high confidence. In reality,
+      a true 95% interval must be much wider than people expect, depending on sample size and
+      variability.
+      <br><br>
+      Larger samples tend to produce narrower confidence intervals by reducing random sampling
+      error, but large samples do <strong>not</strong> protect against bias or poor study design.
+    </p>
 
-        Source: CNBC — “Pfizer says final data analysis shows Covid vaccine is 95% effective” <a href="https://www.cnbc.com/2020/11/18/coronavirus-pfizer-vaccine-is-95percent-effective-plans-to-submit-to-fda-in-days.html" title="CNBC Article, 2020" target="_blank">https://www.cnbc.com/2020/11/18/coronavirus-pfizer-vaccine-is-95percent-effective-plans-to-submit-to-fda-in-days.html</a>
+    <h4 class="card-title mb-3">Why does this quiz matter?</h4>
+    <p>
+      Humans are systematically overconfident. Decades of behavioral science research show that
+      we overweight vivid anecdotes and point estimates, and underweight uncertainty, variability,
+      and alternative explanations (e.g., availability bias; <em>What You See Is All There Is</em>).
+      <br><br>
+      The result isn’t ignorance—it’s a predictable cognitive bias this quiz is designed to surface.
+      <br><br>
+      This quiz helps you:
+      <br>
+      – Build intuition for statistical uncertainty<br>
+      – Practice thinking in ranges instead of single numbers<br>
+      – Develop humility when interpreting evidence<br>
+      – Recognize why claims without confidence intervals—or grounded data—deserve skepticism
+    </p>
+
+    <h4 class="card-title mb-3">A real-world example</h4>
+    <p>
+      Not all “statistically significant” findings mean the same thing.
+      <br><br>
+      Some exposures produce effects so large they’re hard to miss. Others show small associations
+      where confidence intervals—and stronger study designs—suggest confounding rather than
+      causation.
+      <br><br>
+
+      <strong>Smoking → lung cancer</strong><br>
+      Current smokers have roughly 21× higher lung-cancer mortality than never-smokers
+      (RR ≈ 21.4, 95% CI [19.7, 23.2]; Doll et al., 2004).
+      <br><br>
+
+      <strong>Acetaminophen in pregnancy → autism</strong><br>
+      Population models show a ~5% higher hazard
+      (HR 1.05, 95% CI [1.02, 1.08]),
+      but sibling-comparison analyses eliminate the association
+      (HR 0.98, 95% CI [0.93, 1.04]),
+      suggesting the initial signal is likely due to confounding rather than a causal effect
+      (Lee et al., 2021).
+      <br><br>
+      The confidence intervals—and where they sit relative to “no effect”—are what make this
+      difference visible.
+      <br><br>
+      This quiz is a small step toward reading evidence the way scientists intend it to be read.
     </p>
 
     <div class="text-center mt-4">
