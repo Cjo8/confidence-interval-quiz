@@ -184,11 +184,11 @@ QUESTIONS = [
         "unit": "USD",
     },
     {
-        "id": "q10",
-        "text": "Fastest lap time in an F1 car around the Monaco circuit",
-        "true_value": 74.260,  # seconds (1:14.260)
-        "unit": "seconds",
-        "unit_kind": "length",  # NOTE: if you want time-based suffixes, use unit_kind="time" and add mapping in question.html JS
+    "id": "q10",
+    "text": "Fastest lap time in an F1 car around the Monaco circuit",
+    "true_value": 74.260,  # seconds
+    "unit": "seconds",
+    "unit_kind": "time",
     },
     {
         "id": "q11",
