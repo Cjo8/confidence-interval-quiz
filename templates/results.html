@@ -4,106 +4,183 @@
 {% block body_class %}no-subtitle{% endblock %}
 
 {% block content %}
-  <div class="card mb-4">
-    <div class="card-body">
-      <h4 class="card-title mb-2">Your results</h4>
-      <p class="lead mb-1">
-        You captured the true value for
-        <strong>{{ format_number(correct_count) }} out of {{ format_number(total) }}</strong> questions
-        ({{ score_pct }}%).
-      </p>
-      <p>{{ interpretation }}</p>
+<div class="card mb-4">
+  <div class="card-body">
 
-      <!-- Calibration bar: your score vs 95% target -->
-      <div class="calibration-wrapper my-3">
-        <div class="d-flex justify-content-between small text-muted mb-1">
-          <span>0%</span>
-          <span>Accuracy</span>
-          <span>100%</span>
-        </div>
+    <h4 class="card-title mb-2">How calibrated were your ranges?</h4>
 
-        <div class="calibration-bar">
-          <!-- fill up to your score -->
-          <div class="calibration-fill" style="width: {{ score_pct }}%;"></div>
-          <!-- red line at 95% target -->
-          <div class="calibration-target"></div>
-        </div>
+    <p class="lead mb-2">
+      You captured the true value in
+      <strong>{{ format_number(correct_count) }} out of {{ format_number(total) }}</strong>
+      questions ({{ score_pct }}%).
+    </p>
 
-        <div class="d-flex justify-content-between small mt-1">
-          <span>Your score: <strong>{{ score_pct }}%</strong></span>
-          <span class="text-muted">
-            Target ≈ <strong>95%</strong>
-          </span>
-        </div>
+    <p class="mb-2">
+      If your ranges were calibrated like a <strong>95% confidence interval</strong>, they would include the true value
+      <strong>about 19 out of 20 times over repeated use</strong>.
+    </p>
+
+    <p class="mb-3">
+      Instead, your ranges behaved like a <strong>~{{ score_pct }}% coverage procedure</strong>.
+    </p>
+
+    <h5 class="card-title mb-2">What this means</h5>
+    <p class="mb-2">
+      You likely intended to give wide, cautious ranges. In practice, those ranges were
+      <strong>narrower than the uncertainty justified</strong>.
+    </p>
+    <p class="mb-3">
+      This gap between intended confidence and actual coverage is common—even among experts.
+    </p>
+
+    <h5 class="card-title mb-2">
+      <a href="#" class="text-decoration-none"
+         data-bs-toggle="modal" data-bs-target="#whatThisIsModal">
+        What this is (and isn’t)
+      </a>
+    </h5>
+
+    <!-- Calibration bar: your score vs 95% target -->
+    <div class="calibration-wrapper my-3">
+      <div class="d-flex justify-content-between small text-muted mb-1">
+        <span>0%</span>
+        <span>Accuracy</span>
+        <span>100%</span>
       </div>
 
-      <p class="mb-0">
-        Across all users so far, the average correctness rate is
-        <strong>{{ global_avg_correct_pct }}%</strong>
-        over <strong>{{ format_number(total_runs) }}</strong> completed quizzes.
-      </p>
+      <div class="calibration-bar">
+        <!-- fill up to your score -->
+        <div class="calibration-fill" style="width: {{ score_pct }}%;"></div>
+        <!-- red line at 95% target -->
+        <div class="calibration-target"></div>
+      </div>
+
+      <div class="d-flex justify-content-between small mt-1">
+        <span>Your score: <strong>{{ score_pct }}%</strong></span>
+        <span class="text-muted">
+          Target ≈ <strong>95%</strong>
+        </span>
+      </div>
+    </div>
+
+    <h5 class="card-title mb-2">A pattern worth noticing</h5>
+    <p class="mb-0">
+      People tend to do well on familiar, everyday quantities. They struggle when values span
+      <strong>orders of magnitude</strong>—GDPs, global totals, long timelines—where uncertainty is better represented on a
+      <strong>log scale</strong>, not a linear one.
+    </p>
+
+  </div>
+</div>
+
+<h5>Your ranges vs. the truth</h5>
+<p class="text-muted mb-2">
+  Green means the true value fell inside your range. Red means it didn’t—sometimes narrowly, sometimes by a wide margin.
+  Missing isn’t failure. It’s feedback.
+</p>
+
+<div class="table-responsive mb-4 results-table-wrapper">
+  <table class="table table-sm table-striped align-middle">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>Your range</th>
+        <th>True value</th>
+        <th>Included?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in per_question_results %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ r.text }}</td>
+          <td>
+            [{{ format_number(r.lower) }}, {{ format_number(r.upper) }}] {{ r.unit }}
+          </td>
+          <td>
+            {{ format_number(r.true_value) }} {{ r.unit }}
+          </td>
+          <td>
+            {% if r.is_correct %}
+              <span class="badge bg-success">Yes</span>
+            {% else %}
+              <span class="badge bg-danger">No</span>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h5>How others did</h5>
+<p class="mb-4">
+  Across all users so far, the average capture rate is <strong>{{ global_avg_correct_pct }}%</strong>
+  over <strong>{{ format_number(total_runs) }}</strong> completed quizzes.
+  Most people aim for 95% confidence—but produce ranges that behave closer to <strong>40–60% coverage</strong>.
+</p>
+
+<h5>Question-level user averages</h5>
+<div class="table-responsive mb-4 results-table-wrapper">
+  <table class="table table-sm table-bordered align-middle">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>% of users whose range included the true value</th>
+        <th>Attempts</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in per_question_stats %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ s.text }}</td>
+          <td>{{ s.correct_pct }}%</td>
+          <td>{{ format_number(s.attempts) }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h5>Why this matters</h5>
+<p class="mb-4">
+  In science and medicine, <strong>narrow ranges can create false certainty</strong>.
+  Wide uncertainty feels uncomfortable—but it’s often more honest.
+  Confidence intervals aren’t about sounding precise. They’re about respecting how much we don’t know.
+</p>
+
+<a href="{{ url_for('index') }}" class="btn btn-secondary">Try again</a>
+
+<!-- Modal: What this is (and isn’t) -->
+<div class="modal fade ci-modal" id="whatThisIsModal" tabindex="-1" aria-labelledby="whatThisIsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="whatThisIsModalLabel">What this is (and isn’t)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          This quiz does <strong>not</strong> compute statistical confidence intervals from sample data.
+        </p>
+
+        <p>
+          It examines how people <strong>set uncertainty ranges when they believe they are being careful</strong>,
+          and whether those ranges actually capture the truth over repeated attempts.
+        </p>
+
+        <p class="mb-0">
+          That calibration skill matters when interpreting real scientific studies, health evidence, and policy claims.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
+</div>
 
-  <h5>Your intervals vs the true answers</h5>
-  <div class="table-responsive mb-4 results-table-wrapper">
-    <table class="table table-sm table-striped align-middle">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Question</th>
-          <th>Your interval</th>
-          <th>True value</th>
-          <th>Correct?</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for r in per_question_results %}
-          <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ r.text }}</td>
-            <td>
-              [{{ format_number(r.lower) }}, {{ format_number(r.upper) }}] {{ r.unit }}
-            </td>
-            <td>
-              {{ format_number(r.true_value) }} {{ r.unit }}
-            </td>
-            <td>
-              {% if r.is_correct %}
-                <span class="badge bg-success">Yes</span>
-              {% else %}
-                <span class="badge bg-danger">No</span>
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-
-  <h5>Question-level user averages</h5>
-  <div class="table-responsive mb-4 results-table-wrapper">
-    <table class="table table-sm table-bordered align-middle">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Question</th>
-          <th>% of users whose interval included the true value</th>
-          <th>Attempts</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for s in per_question_stats %}
-          <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ s.text }}</td>
-            <td>{{ s.correct_pct }}%</td>
-            <td>{{ format_number(s.attempts) }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-
-  <a href="{{ url_for('index') }}" class="btn btn-secondary">Try again</a>
 {% endblock %}
